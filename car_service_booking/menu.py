@@ -22,3 +22,14 @@ def main_menu():
             add_customer(name, phone, email)
             print(" Customer added successfully!")
 
+ elif choice == "2":
+            customers = get_all_customers()
+            print("\nAvailable Customers:")
+            for c in customers:
+                print(f"{c[0]} - {c[1]} ({c[2]})")
+            customer_id = input("Enter customer ID for this car: ")
+            model = input("Enter car model: ")
+            year = input("Enter car year: ")
+            add_car(customer_id, model, year)
+            print(" Car registered successfully!")
+
