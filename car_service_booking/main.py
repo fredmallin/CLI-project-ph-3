@@ -27,3 +27,14 @@ def setup_database():
             FOREIGN KEY(customer_id) REFERENCES customers(id)
         )
     """)
+ # Appointments Table
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS appointments (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            car_id INTEGER,
+            service_type TEXT NOT NULL,
+            date TEXT NOT NULL,
+            status TEXT DEFAULT 'Scheduled',
+            FOREIGN KEY(car_id) REFERENCES cars(id)
+        )
+    """)
