@@ -7,3 +7,10 @@ def add_customer(name, phone, email):
     cursor.execute("INSERT INTO customers (name, phone, email) VALUES (?, ?, ?)", (name, phone, email))
     conn.commit()
     conn.close()
+def get_all_customers():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM customers")
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
