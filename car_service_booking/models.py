@@ -14,3 +14,11 @@ def get_all_customers():
     rows = cursor.fetchall()
     conn.close()
     return rows
+# ---------- Cars ----------
+def add_car(customer_id, model, year):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO cars (customer_id, model, year) VALUES (?, ?, ?)", (customer_id, model, year))
+    conn.commit()
+    conn.close()
+
