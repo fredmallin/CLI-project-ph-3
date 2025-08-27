@@ -17,3 +17,13 @@ def setup_database():
             email TEXT
         )
     """)
+# Cars Table
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS cars (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            customer_id INTEGER,
+            model TEXT NOT NULL,
+            year INTEGER,
+            FOREIGN KEY(customer_id) REFERENCES customers(id)
+        )
+    """)
