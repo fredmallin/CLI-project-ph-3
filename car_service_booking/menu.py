@@ -15,3 +15,10 @@ def main_menu():
 
         choice = input("Choose an option: ")
 
+  if choice == "1":
+            name = input("Enter name: ")
+            phone = input("Enter phone: ")
+            email = input("Enter email: ")
+            add_customer(name, phone, email)
+            print(" Customer added successfully!")
+
