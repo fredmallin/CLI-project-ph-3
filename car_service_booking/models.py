@@ -30,3 +30,18 @@ def get_cars_by_customer(customer_id):
     conn.close()
     return rows
 
+# ---------- Appointments ----------
+def book_appointment(car_id, service_type, date):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO appointments (car_id, service_type, date) VALUES (?, ?, ?)", (car_id, service_type, date))
+    conn.commit()
+    conn.close()
+
+def get_service_history(car_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM appointments WHERE car_id = ?", (car_id,))
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
