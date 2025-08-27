@@ -7,7 +7,7 @@ def setup_database():
     conn = get_connection()
     cursor = conn.cursor()
 
-    # Customers Table
+    # Customers
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS customers (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -16,7 +16,8 @@ def setup_database():
             email TEXT
         )
     """)
-# Cars Table
+
+    # Cars
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS cars (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -26,7 +27,8 @@ def setup_database():
             FOREIGN KEY(customer_id) REFERENCES customers(id)
         )
     """)
-# Appointments Table
+
+    # Appointments
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS appointments (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -37,3 +39,6 @@ def setup_database():
             FOREIGN KEY(car_id) REFERENCES cars(id)
         )
     """)
+
+    conn.commit()
+    conn.close()
