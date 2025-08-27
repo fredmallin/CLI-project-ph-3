@@ -3,3 +3,15 @@ from models import (
     add_car, get_cars_by_customer,
     book_appointment, get_service_history
 )
+def main_menu():
+    while True:
+        print("\n=== Car Service Booking CLI ===")
+        print("1. Add Customer")
+        print("2. Add Car")
+        print("3. Book Appointment")
+        print("4. View Customer Cars")
+        print("5. View Car Service History")
+        print("6. Exit")
+
+        choice = input("Choose an option: ")
+
