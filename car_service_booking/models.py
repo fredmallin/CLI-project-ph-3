@@ -22,3 +22,11 @@ def add_car(customer_id, model, year):
     conn.commit()
     conn.close()
 
+def get_cars_by_customer(customer_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM cars WHERE customer_id = ?", (customer_id,))
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
+
