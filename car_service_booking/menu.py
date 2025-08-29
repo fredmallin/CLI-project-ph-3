@@ -44,7 +44,7 @@ def main_menu():
             for car in cars:
                 print(f"{car[0]} - {car[2]} ({car[3]})")
             car_id = input("Enter car ID for service: ")
-            service_type = input("Enter service type (e.g., Oil Change, Tire Rotation): ")
+            service_type = input("Enter service type (e.g., Oil Change, Tire Rotation, Battery service, Brake Service, Fuel System Cleaning): ")
             date = input("Enter service date (YYYY-MM-DD): ")
             book_appointment(car_id, service_type, date)
             print(" Appointment booked successfully!")
