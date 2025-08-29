@@ -1,7 +1,8 @@
 from models import (
     add_customer, get_all_customers,
     add_car, get_cars_by_customer,
-    book_appointment, get_service_history
+    book_appointment, get_service_history,
+    delete_appointment
 )
 
 def main_menu():
@@ -12,7 +13,8 @@ def main_menu():
         print("3. Book Appointment")
         print("4. View Customer Cars")
         print("5. View Car Service History")
-        print("6. Exit")
+        print("6. Delete Appointment")
+        print("7. Exit")
 
         choice = input("Choose an option: ")
 
@@ -44,10 +46,10 @@ def main_menu():
             for car in cars:
                 print(f"{car[0]} - {car[2]} ({car[3]})")
             car_id = input("Enter car ID for service: ")
-            service_type = input("Enter service type (e.g., Oil Change, Tire Rotation, Battery service, Brake Service, Fuel System Cleaning): ")
+            service_type = input("Enter service type (e.g., Oil Change, Tire Rotation): ")
             date = input("Enter service date (YYYY-MM-DD): ")
             book_appointment(car_id, service_type, date)
-            print(" Appointment booked successfully!")
+            print("✅Appointment booked successfully!")
 
         elif choice == "4":
             customer_id = input("Enter customer ID: ")
@@ -70,6 +72,19 @@ def main_menu():
                     print(f"ID: {appt[0]} | Service: {appt[2]} | Date: {appt[3]} | Status: {appt[4]}")
 
         elif choice == "6":
+            car_id = input("Enter car ID to view appointments: ")
+            history = get_service_history(car_id)
+            if not history:
+                print("No service history found for this car.")
+            else:
+                print("\nAppointments for this car:")
+                for appt in history:
+                    print(f"ID: {appt[0]} | Service: {appt[2]} | Date: {appt[3]} | Status: {appt[4]}")
+                appt_id = input("Enter Appointment ID to delete: ")
+                delete_appointment(appt_id)
+                print(" Appointment deleted successfully!")
+
+        elif choice == "7":
             print(" Goodbye!")
             break
 

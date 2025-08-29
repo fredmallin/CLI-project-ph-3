@@ -45,3 +45,10 @@ def get_service_history(car_id):
     rows = cursor.fetchall()
     conn.close()
     return rows
+
+def delete_appointment(appointment_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM appointments WHERE id = ?", (appointment_id,))
+    conn.commit()
+    conn.close()
