@@ -49,7 +49,7 @@ def main_menu():
             service_type = input("Enter service type (e.g., Oil Change, Tire Rotation): ")
             date = input("Enter service date (YYYY-MM-DD): ")
             book_appointment(car_id, service_type, date)
-            print("✅Appointment booked successfully!")
+            print("Appointment booked successfully!")
 
         elif choice == "4":
             customer_id = input("Enter customer ID: ")
